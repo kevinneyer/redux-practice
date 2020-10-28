@@ -6,10 +6,17 @@ import { decrement } from './actions'
 import { addText } from './actions'
 
 function App() {
+  // const [things, setThings] = useState([])
 
-  const counter = useSelector(state => state.counter)
+  const counter = useSelector( state => state.counter )
+  const text = useSelector( state => state.text )
+  // const things = useSelector( state => state.things)
   const dispatch = useDispatch()
-  const text = useSelector(state => state.text )
+  
+  // const submitText = (e) => {
+  //   e.preventDefault();
+  //   setThings(...things, text)
+  // }
 
   return (
     <div className='App'>
@@ -22,15 +29,12 @@ function App() {
       <h1>Words!</h1>
       <span>{text}</span>
       <br />
-      <input onChange={ () => dispatch(addText()) }></input>
-      
-      <button>Submit</button>
+      <form>
+        <input placeholder='add text here...' value={text} onChange={ (e) => dispatch( {type: 'ADD_TEXT', payload: e.target.value }) } ></input>
+        <button>Submit</button>
+      </form>
         <div>
-          <ul>
-            <li>
-
-            </li>
-          </ul>
+          
         </div>
     </div>
   );
