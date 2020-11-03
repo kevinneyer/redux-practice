@@ -10,13 +10,14 @@ function App() {
 
   const counter = useSelector( state => state.counter )
   const text = useSelector( state => state.text )
-  // const things = useSelector( state => state.things)
+  const things = useSelector( state => state.things)
   const dispatch = useDispatch()
   
-  // const submitText = (e) => {
-  //   e.preventDefault();
-  //   setThings(...things, text)
-  // }
+  const submitText = (e) => {
+    e.preventDefault();
+    dispatch( {type: 'SUBMIT_TEXT', payload: text} )
+    dispatch( {type: 'ADD_TEXT', payload: '' }) 
+  }
 
   return (
     <div className='App'>
@@ -29,12 +30,14 @@ function App() {
       <h1>Words!</h1>
       <span>{text}</span>
       <br />
-      <form>
+      <form onSubmit={submitText}>
         <input placeholder='add text here...' value={text} onChange={ (e) => dispatch( {type: 'ADD_TEXT', payload: e.target.value }) } ></input>
         <button>Submit</button>
       </form>
-        <div>
-          
+        <div className='things'>
+          <ul>
+            {things.map(thing => <li>{thing}</li>)}
+          </ul>
         </div>
     </div>
   );
