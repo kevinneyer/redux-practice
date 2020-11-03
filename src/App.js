@@ -19,6 +19,10 @@ function App() {
     dispatch( {type: 'ADD_TEXT', payload: '' }) 
   }
 
+  const deleteThing = (e) => {
+    dispatch( {type: 'DELETE_THING', payload: e.target.value} )
+  }
+
   return (
     <div className='App'>
       <h1>Counter</h1>
@@ -36,7 +40,7 @@ function App() {
       </form>
         <div className='things'>
           <ul>
-            {things.map(thing => <li>{thing}</li>)}
+            {things.map(thing => <li>{thing}<button value={thing} onClick={deleteThing}>x</button></li>)}
           </ul>
         </div>
     </div>

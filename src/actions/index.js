@@ -11,5 +11,9 @@ export const addText = () => {
 }
 
 export const submit = () => {
-    return {type: 'SUBMIT_TEXT'}
+    return { type: 'SUBMIT_TEXT' }
+}
+
+export const deleteThing = () => {
+    return { type: 'DELETE_THING' }
 }
