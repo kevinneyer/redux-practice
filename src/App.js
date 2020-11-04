@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { increment } from './actions'
 import { decrement } from './actions'
-import { addText } from './actions'
 
 function App() {
-  // const [things, setThings] = useState([])
 
   const counter = useSelector( state => state.counter )
   const text = useSelector( state => state.text )
@@ -31,7 +29,7 @@ function App() {
           <button onClick={ () => dispatch(decrement()) }>-</button>
           <button onClick={ () => dispatch(increment()) }>+</button>
         </div>
-      <h1>Words!</h1>
+      <h1>To-Do's!</h1>
       <span>{text}</span>
       <br />
       <form onSubmit={submitText}>
