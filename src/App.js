@@ -3,6 +3,7 @@ import './App.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { increment } from './actions'
 import { decrement } from './actions'
+import Counter from './counter'
 
 function App() {
 
@@ -23,24 +24,31 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Counter</h1>
+      <div>
+        <h1>Counter</h1>
+          <div>
+            <span className='count'> {counter} </span><br/>
+            <button onClick={ () => dispatch(decrement()) }>-</button>
+            <button onClick={ () => dispatch(increment()) }>+</button>
+          </div>
+      </div>
+      <div>
+        <h1>To-Do's!</h1>
+        <span>{text}</span>
+        <br />
+        <form onSubmit={submitText}>
+          <input placeholder='add text here...' value={text} onChange={ (e) => dispatch( {type: 'ADD_TEXT', payload: e.target.value }) } ></input>
+          <button>Submit</button>
+        </form>
         <div>
-          <span className='count'> {counter} </span><br/>
-          <button onClick={ () => dispatch(decrement()) }>-</button>
-          <button onClick={ () => dispatch(increment()) }>+</button>
-        </div>
-      <h1>To-Do's!</h1>
-      <span>{text}</span>
-      <br />
-      <form onSubmit={submitText}>
-        <input placeholder='add text here...' value={text} onChange={ (e) => dispatch( {type: 'ADD_TEXT', payload: e.target.value }) } ></input>
-        <button>Submit</button>
-      </form>
-        <div className='things'>
           <ul>
-            {things.map(thing => <li>{thing}<button value={thing} onClick={deleteThing}>x</button></li>)}
+            {things.map(thing => 
+              <li> {thing} <button value={thing} onClick={deleteThing}>x</button></li>
+            )}
           </ul>
         </div>
+      </div>
+      <Counter />
     </div>
   );
 }

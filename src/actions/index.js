@@ -17,3 +17,11 @@ export const submit = () => {
 export const deleteThing = () => {
     return { type: 'DELETE_THING' }
 }
+
+export const startTimer = () => {
+    return { type: 'START_TIMER' }
+}
+
+export const stopTimer = () => {
+    return { type: 'STOP_TIMER' }
+}
